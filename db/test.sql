@@ -28,6 +28,11 @@ UPDATE human:James SET cars = ['car:tesla', 'car:toyota'];
 UPDATE car:tesla SET owner = human:James;
 UPDATE car:toyota SET owner = human:James;
 
+CREATE car:shitbox SET model = "Hilux", price = 0;
+UPDATE human:alex SET cars=['car:shitbox'] ;
+UPDATE car:tesla SET owner = human:alex;
+SELECT * FROM human WHERE id= human:alex;
+
 --Many-thru
 CREATE part:tire SET brand = "Michelin", size = 5;
 CREATE part:gastank SET brand = "Tanksy", size = 10;
@@ -45,3 +50,6 @@ RELATE human:James -> drove -> car:toyota SET when = time::now(), destination = 
 
 SELECT ->drove->car FROM human;
 SELECT <-drove<-human FROM car;
+
+
+
